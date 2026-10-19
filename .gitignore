@@ -30,3 +30,6 @@ perf.data.old
 
 # macOS
 .DS_Store
+
+# extras
+tmp/
