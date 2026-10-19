@@ -21,6 +21,14 @@ Each problem lives in its own file with:
 - Each solution has at least one test case covering edge cases (empty input, single element, duplicates)
 - Complexity (time and space) stated in a comment next to the solution
 
+<!--
+### Commit messages
+
+- Subject in the imperative mood ("Add", "Update", "Fix"), not past tense
+- Subject line under 72 characters, no trailing period
+- Optional body after a blank line, explaining the why when it is not obvious
+-->
+
 ## Build and run
 
 Once the toolchain is set up:
