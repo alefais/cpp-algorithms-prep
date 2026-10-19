@@ -1,0 +1,32 @@
+# Build output
+build/
+cmake-build-*/
+out/
+bin/
+*.o
+*.obj
+*.a
+*.so
+*.dylib
+*.exe
+
+# Tooling generated
+compile_commands.json
+.cache/
+.clangd/
+CMakeUserPresets.json
+
+# Editors and IDEs
+.vscode/
+!.vscode/extensions.json
+.idea/
+
+# Sanitizer and profiler output
+*.log
+perf.data
+perf.data.old
+*.folded
+*.svg
+
+# macOS
+.DS_Store
