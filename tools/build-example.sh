@@ -18,5 +18,5 @@ out_rel_path="${out_rel_path%.cpp}"
 out="$root/build/bin/$out_rel_path"
 
 mkdir -p "$(dirname "$out")"
-clang++ -std=c++20 -Wall -Wextra -Werror "$src" -o "$out"
+clang++ -std=c++20 -Wall -Wextra -Werror -I . "$src" common/*.cpp -o "$out"
 echo "Built: ${out#$root/}"
