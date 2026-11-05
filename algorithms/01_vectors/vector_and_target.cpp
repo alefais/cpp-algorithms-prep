@@ -8,11 +8,20 @@
 #include "common/debug.hpp"
 
 /**
-  Solution 1:
-    ~ n x (n-1) comparisons -> O(nˆ2) time complexity
-    O(1) space complexity
+    Problem: Two Sum
+
+    Given a std::vector<int> nums and an int target, return the indices i and j (with i != j) such that nums[i] + nums[j] == target.
+    You can assume exactly one solution exists, and you may not use the same element twice.
+    Returns the pair (i, j) with i < j. 
+
+    Example: nums = {2, 7, 11, 15}, target = 9 gives {0, 1}.
 */
-std::pair<int, int> check_vector_and_target_v1(std::vector<int>& a, int target) {
+
+/**
+    Returns the pair (i, j) with i < j. If more than one solution exists,
+    returns the pair whose second index is the smallest, scanning the vector from left to right.
+ */
+std::pair<int, int> check_vector_and_target_v1a(const std::vector<int>& a, const int target) {
     std::pair<int, int> res(0, 0); // result pair, (0, 0) is the default value if no solution is found, a valid solution will always have i != j
 
     for (size_t i = 0; i < a.size(); i++) {
@@ -34,11 +43,51 @@ std::pair<int, int> check_vector_and_target_v1(std::vector<int>& a, int target) 
 }
 
 /**
-  Solution 2:
+    Returns the pair (i, j) with i < j. If more than one solution exists,
+    returns the pair whose first index is the smallest, scanning the vector from left to right.
+ */
+std::pair<int, int> check_vector_and_target_v1b(const std::vector<int>& a, const int target) {
+    std::pair<int, int> res(0, 0); // result pair, (0, 0) is the default value if no solution is found, a valid solution will always have i != j
+
+    for (size_t i = 0; i < a.size(); i++) {
+        for (size_t j = 0; j < a.size(); j++) {
+            if (j == i) continue;
+
+            if ((a[i] + a[j]) == target) {
+                if (i < j) {
+                    res.first = i;
+                    res.second = j;
+                } else {
+                    res.first = j;
+                    res.second = i;
+                }
+                return res;
+            }
+        }
+    }
+
+    return res;
+}
+
+/**
+    Solution 1:
+    ~ n x (n-1) comparisons -> O(nˆ2) time complexity
+    O(1) space complexity
+*/
+std::pair<int, int> check_vector_and_target_v1(const std::vector<int>& a, const int target) {
+   return check_vector_and_target_v1a(a, target);
+}
+
+
+/**
+    Solution 2:
     ~ O(n) time complexity to read the array
     ~ O(n) space complexity for the extra hash map
+
+    Returns the pair (i, j) with i < j. If more than one solution exists,
+    returns the pair whose second index is the smallest, scanning the vector from left to right.
 */
-std::pair<int, int> check_vector_and_target_v2(std::vector<int>& a, int target, bool debug = false) {
+std::pair<int, int> check_vector_and_target_v2(const std::vector<int>& a, const int target, bool debug = false) {
     std::unordered_map<int, int> m = {};
     std::pair<int, int> res(0, 0); // result pair, (0, 0) is the default value if no solution is found, a valid solution will always have i != j
 
