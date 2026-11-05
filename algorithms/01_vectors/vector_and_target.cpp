@@ -24,16 +24,11 @@
 std::pair<int, int> check_vector_and_target_v1a(const std::vector<int>& a, const int target) {
     std::pair<int, int> res(0, 0); // result pair, (0, 0) is the default value if no solution is found, a valid solution will always have i != j
 
-    for (size_t i = 0; i < a.size(); i++) {
-        for (size_t j = 0; j < a.size() && j != i; j++) {
+    for (size_t j = 0; j < a.size(); j++) {
+        for (size_t i = 0; i < j; i++) {
             if ((a[i] + a[j]) == target) {
-                if (i < j) {
-                    res.first = i;
-                    res.second = j;
-                } else {
-                    res.first = j;
-                    res.second = i;
-                }
+                res.first = i;
+                res.second = j;
                 return res;
             }
         }
